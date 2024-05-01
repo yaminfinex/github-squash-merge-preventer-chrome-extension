@@ -8,8 +8,6 @@ function checkBranch() {
             if (selectItem && mergeButton) {
                 selectItem.disabled = true;
                 mergeButton.disabled = true;
-            } else {
-                setTimeout(checkBranch, 125);
             }
         }    
     });
@@ -17,5 +15,9 @@ function checkBranch() {
 
 
 window.onload = function() {
-    setTimeout(checkBranch, 125);
+    if (window.location.href.includes("github.com") && window.location.href.includes("/pull/")) {
+        // Needs to be an interval instead of just set timeouts until disable because
+        //   a rerender on the page can flip it back.
+        setInterval(checkBranch, 500);
+    }
 }
