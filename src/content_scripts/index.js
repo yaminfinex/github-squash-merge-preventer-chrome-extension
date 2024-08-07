@@ -1,5 +1,5 @@
 function checkBranch() {
-    chrome.storage.sync.get(({ branchesList: [] }), (data) => {  
+    chrome?.storage?.sync?.get(({ branchesList: [] }), (data) => {  
         const targetBranch = document.querySelector("span.commit-ref span.css-truncate-target").innerText;
         if (data.branchesList.includes(targetBranch)) {
             const squashButton = document.querySelector("button.btn-group-squash");
